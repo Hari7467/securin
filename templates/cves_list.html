@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CVE List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>CVE LIST</h1>
+
+        <div class="filters">
+            <div class="filter-group">
+                <input type="text" id="cve-id-filter" placeholder="Search by CVE ID">
+                <input type="text" id="year-filter" placeholder="Filter by Year">
+                <input type="text" id="min-score-filter" placeholder="Min CVSS Score">
+                <input type="text" id="max-score-filter" placeholder="Max CVSS Score">
+                <input type="text" id="last-modified-days-filter" placeholder="Modified in last N days">
+                <button id="apply-filters" class="btn">Apply Filters</button>
+                <button id="clear-filters" class="btn">Clear Filters</button>
+            </div>
+        </div>
+
+        <div class="total-records">
+            <strong>Total Records: <span id="total-count">0</span></strong>
+        </div>
+
+        <div class="table-container">
+            <table id="cve-table">
+                <thead>
+                    <tr>
+                        <th>CVE ID</th>
+                        <th>IDENTIFIER</th>
+                        <th class="sortable" data-field="cve.published">PUBLISHED DATE <span class="sort-indicator"></span></th>
+                        <th class="sortable" data-field="cve.lastModified">LAST MODIFIED DATE <span class="sort-indicator"></span></th>
+                        <th>STATUS</th>
+                    </tr>
+                </thead>
+                <tbody id="cve-table-body">
+                    <!-- Data will be populated via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination-container">
+            <div class="results-per-page">
+                <span>Results per page:</span>
+                <select id="results-per-page">
+                    <option value="10" selected>10</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+            <div class="pagination">
+                <button id="prev-page" class="btn page-btn">&lt;</button>
+                <div id="page-numbers"></div>
+                <button id="next-page" class="btn page-btn">&gt;</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/cve_list.js') }}"></script>
+</body>
+</html>

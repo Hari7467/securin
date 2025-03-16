@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CVE Detail</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>CVE DETAIL</h1>
+        <div class="back-link">
+            <a href="/cves/list">&larr; Back to List</a>
+        </div>
+
+        <div class="cve-detail-container">
+            <div class="cve-header">
+                <h2 id="cve-id">{{ cve_id }}</h2>
+                <div class="cve-status">
+                    <span id="cve-status"></span>
+                </div>
+            </div>
+
+            <div class="cve-section">
+                <h3>Description</h3>
+                <div id="description" class="description"></div>
+            </div>
+
+            <div class="cve-section">
+                <h3>CVSS V2 Metrics:</h3>
+                <table class="detail-table">
+                    <tr>
+                        <th>Severity:</th>
+                        <td id="cvss-v2-severity"></td>
+                        <th>Score:</th>
+                        <td id="cvss-v2-score"></td>
+                    </tr>
+                    <tr>
+                        <th>Vector String:</th>
+                        <td id="cvss-v2-vector" colspan="3"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="cve-section">
+                <h3>Impact Metrics</h3>
+                <table class="detail-table">
+                    <tr>
+                        <th>Access Vector</th>
+                        <th>Access Complexity</th>
+                        <th>Authentication</th>
+                        <th>Confidentiality Impact</th>
+                        <th>Integrity Impact</th>
+                        <th>Availability Impact</th>
+                    </tr>
+                    <tr>
+                        <td id="access-vector"></td>
+                        <td id="access-complexity"></td>
+                        <td id="authentication"></td>
+                        <td id="confidentiality-impact"></td>
+                        <td id="integrity-impact"></td>
+                        <td id="availability-impact"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="cve-section">
+                <h3>Scores :</h3>
+                <table class="detail-table">
+                    <tr>
+                        <th>Exploitability Score:</th>
+                        <td id="exploitability-score"></td>
+                    </tr>
+                    <tr>
+                        <th>Impact Score:</th>
+                        <td id="impact-score"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="cve-section">
+                <h3>CPE:</h3>
+                <table class="detail-table" id="cpe-table">
+                    <thead>
+                        <tr>
+                            <th>Criteria</th>
+                            <th>Match Criteria ID</th>
+                            <th>Vulnerable</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- CPE data will be populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/cve_detail.js') }}"></script>
+</body>
+</html>
